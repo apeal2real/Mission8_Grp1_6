@@ -4,15 +4,13 @@ using System.Diagnostics;
 
 namespace Mission8_Grp1_6.Controllers
 {
+
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        public IActionResult AddEdit()
         {
-            _logger = logger;
+            return View();
         }
-
         public IActionResult Index()
         {
             return View();
