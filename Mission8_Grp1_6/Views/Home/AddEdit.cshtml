@@ -1,0 +1,54 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+    <style>
+        form {
+            width: 50%;
+            margin: 0 auto;
+        }
+        input[type="text"], input[type="email"], input[type="tel"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+<form method="post" action="submit.aspnet">
+    <label for="task">Task:</label><br>
+    <input type="text" id="task" name="task" required><br>
+
+    <label for="dueDate">Due Date:</label><br>
+    <input type="date" id="dueDate" name="dueDate" required><br>
+
+    <label for="quadrant">Quadrant:</label><br>
+    <input type="text" id="quadrant" name="quadrant" required><br>
+
+    <label for="category">Category:</label><br>
+    <select id="category" name="category" required>
+        <option value="">Select Category</option>
+        <option value="Home">Home</option>
+        <option value="School">School</option>
+        <option value="Work">Work</option>
+        <option value="Church">Church</option>
+    </select><br>
+
+    <label for="completed">Completed:</label><br>
+    <select id="completed" name="completed" required>
+        <option value="">Select</option>
+        <option value="True">True</option>
+        <option value="False">False</option>
+    </select><br><br />
+
+    <input type="submit" value="Submit">
+</form>
