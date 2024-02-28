@@ -11,7 +11,6 @@
             <h3 class="mt-2">Quadrant I</h3>
             <table class="table">
                 <tbody>
-                @*Make this dynamic with the model*@
                 <tr>
                     <th></th>
                     <th>Due Date</th>
@@ -25,7 +24,8 @@
                     {
                         <tr>
                             <td class="col-1">
-                                <div class="form-check">
+                                @* TODO: make this input a form to submit info and do action "check" *@
+                                <div class="form-check" method="post">
                                     <input class="form-check-input" type="checkbox" value="true">
                                 </div>
                             </td>
