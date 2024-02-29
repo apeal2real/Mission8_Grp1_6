@@ -24,7 +24,7 @@
             background-color: #0056b3;
         }
     </style>
-<form method="post" action="submit.aspnet">
+<form method="post" asp-controller="Home" asp-action="AddEdit"> <!--<a class="btn btn-primary" asp-controller="Home" asp-action="Edit" asp-route-id="x.MovieId">Edit</a></td>-->
     <label for="task">Task:</label><br>
     <input type="text" id="task" name="task" required><br>
 
