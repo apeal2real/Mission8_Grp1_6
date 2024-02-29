@@ -10,15 +10,18 @@ namespace Mission8_Grp1_6.Models
         }
 
         public DbSet<Task> Tasks { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Task>().HasData(
-                 new Task { TaskID = 1, TaskName = "Task 1 Name", Quadrant = 1, Category = "Home", Completed = false },
-                 new Task { TaskID = 2, TaskName = "Task 2 Name", Quadrant = 2, Category = "School", Completed = false },
-                 new Task { TaskID = 3, TaskName = "Task 3 Name", Quadrant = 3, Category = "Work", Completed = false },
-                 new Task { TaskID = 4, TaskName = "Task 4 Name", Quadrant = 4, Category = "Church", Completed = false }
+            modelBuilder.Entity<Category>().HasData(
+                 new Category { CategoryID = 1, CategoryName = "Home" },
+                 new Category { CategoryID = 2, CategoryName = "School" },
+                 new Category { CategoryID = 3, CategoryName = "Work" },
+                 new Category { CategoryID = 4, CategoryName = "Church" }
             );
         }
     }
 }
+
+
