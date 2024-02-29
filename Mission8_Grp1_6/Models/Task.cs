@@ -19,6 +19,6 @@ namespace Mission8_Grp1_6.Models
 
         public string? Category { get; set; }
 
-        public bool? Completed { get; set; }
+        public bool Completed { get; set; }
     }
 }
