@@ -26,7 +26,10 @@
     Fill out the form below to add a task to your To-Do list!
 </div>
 <br />
-<form asp-action="AddEdit" method="post">
+<form method="post">
+    <!-- Hidden field to send the MovieId along with the form submission -->
+    <input type="hidden" asp-for="TaskID" />
+
     <div class="form-group">
         <label asp-for="TaskName">Task Name</label>
         <input asp-for="TaskName" class="form-control" />
@@ -65,4 +68,7 @@
     <br />
 
     <button type="submit" class="btn btn-primary">Submit</button>
+
+    <!-- Display validation errors if any -->
+    <div asp-validation-summary="All"></div>
 </form>
