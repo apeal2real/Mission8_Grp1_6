@@ -45,7 +45,16 @@ namespace Mission8_Grp1_6.Controllers
             _context.SaveChanges();
             return View("Index");
         }
-        
+
+        public IActionResult Index(Mission8_Grp1_6.Models.Task response)
+        {
+            ViewBag.Tasks = _context.Tasks.ToList();
+            var tasks = _context.Tasks
+                .ToList();
+
+            return View(tasks);
+        }
+
         [HttpGet]
         public IActionResult Edit(int id)
         {
