@@ -13,44 +13,9 @@ namespace Mission8_Grp1_6.Controllers
         {
             _repo = temp;
         }
-
-        // [HttpGet]
-        // public IActionResult Index()
-        // {
-        //     return View();
-        // }
-        //[HttpGet]
-        //public IActionResult Index()
-        //{
-        //    // ViewBag.Tasks = _context.Tasks.ToList();
-        //    var tasks = _context.Tasks
-        //        .ToList();
-
-        //    return View(tasks);
-        //}
-
-
-        [HttpGet]
-        public IActionResult AddEdit()
-        {
-            ViewBag.Tasks = _repo.Tasks.ToList();
-            ViewBag.Categories = _repo.Categories
-                .OrderBy(x => x.CategoryID)
-                .ToList();
-            return View(new Mission8_Grp1_6.Models.Task());
-        }
-
-        [HttpPost]
-        public IActionResult AddEdit(Mission8_Grp1_6.Models.Task response) //form -> AddEdit
-        {
-            ViewBag.Tasks = _repo.Tasks.ToList();
-            _repo.AddTask(response); //add record to database
-            return RedirectToAction("Index");
-        }
-
         public IActionResult Index(Mission8_Grp1_6.Models.Task response)
         {
-            ViewBag.Tasks = _repo.Tasks.ToList();
+            // ViewBag.Tasks = _repo.Tasks.ToList();
             var tasks = _repo.Tasks
                 .ToList();
 
@@ -62,6 +27,24 @@ namespace Mission8_Grp1_6.Controllers
         }
 
         [HttpGet]
+        public IActionResult AddEdit()
+        {
+            // ViewBag.Tasks = _repo.Tasks.ToList();
+            ViewBag.Categories = _repo.Categories
+                .OrderBy(x => x.CategoryID)
+                .ToList();
+            return View(new Mission8_Grp1_6.Models.Task());
+        }
+
+        [HttpPost]
+        public IActionResult AddEdit(Mission8_Grp1_6.Models.Task response) //form -> AddEdit
+        {
+            // ViewBag.Tasks = _repo.Tasks.ToList();
+            _repo.AddTask(response); //add record to database
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
         public IActionResult Edit(int id)
         {
             var recordToEdit = _repo.Tasks
@@ -70,7 +53,7 @@ namespace Mission8_Grp1_6.Controllers
                 .OrderBy(x => x.CategoryID)
                 .ToList();
 
-            ViewBag.Tasks = _repo.Tasks.ToList();
+            // ViewBag.Tasks = _repo.Tasks.ToList();
             return View("AddEdit", recordToEdit); //addedit
         }
 
@@ -84,7 +67,7 @@ namespace Mission8_Grp1_6.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            ViewBag.Tasks = _repo.Tasks.ToList();
+            // ViewBag.Tasks = _repo.Tasks.ToList();
             var recordToDelete = _repo.Tasks
                 .Single(x => x.TaskID == id);
 
@@ -97,10 +80,14 @@ namespace Mission8_Grp1_6.Controllers
             _repo.RemoveTask(deleted);
             return RedirectToAction("Index");
         }
-        [HttpPost]
-        public IActionResult Check(Mission8_Grp1_6.Models.Task task)
+        [HttpGet]
+        public IActionResult Check(int id)
         {
+            var task = _repo.Tasks
+                .Single(x => x.TaskID == id);
+
             task.Completed = true;
+            _repo.UpdateTask(task);
             return RedirectToAction("Index");
         }
     }
