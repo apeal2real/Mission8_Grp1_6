@@ -29,7 +29,15 @@
                         </td>
                         <td class="col-3 align-middle text-center">@x.DueDate</td>
                         <td class="col-3 align-middle text-center">@x.TaskName</td>
-                        <td class="col-3 align-middle text-center">@x.Category</td>
+                        <td class="col-3 align-middle text-center">
+                            @foreach (Category c in ViewBag.Categories)
+                            {
+                                @if (c.CategoryID == x.CategoryID)
+                                {
+                                    @c.CategoryName
+                                }
+                            }
+                        </td>
                         <td class="col-1">
                             @* Edit button *@
                             <a class="btn" asp-controller="Home" asp-action="Edit" asp-route-id="@x.TaskID">
@@ -83,7 +91,15 @@
                         </td>
                         <td class="col-3 align-middle text-center">@x.DueDate</td>
                         <td class="col-3 align-middle text-center">@x.TaskName</td>
-                        <td class="col-3 align-middle text-center">@x.Category</td>
+                        <td class="col-3 align-middle text-center">
+                            @foreach (Category c in ViewBag.Categories)
+                            {
+                                @if (c.CategoryID == x.CategoryID)
+                                {
+                                    @c.CategoryName
+                                }
+                            }
+                        </td>
                         <td class="col-1">
                             @* Edit button *@
                             <a class="btn" asp-controller="Home" asp-action="Edit" asp-route-id="@x.TaskID">
@@ -139,7 +155,15 @@
                         </td>
                         <td class="col-3 align-middle text-center">@x.DueDate</td>
                         <td class="col-3 align-middle text-center">@x.TaskName</td>
-                        <td class="col-3 align-middle text-center">@x.Category</td>
+                        <td class="col-3 align-middle text-center">
+                            @foreach (Category c in ViewBag.Categories)
+                            {
+                                @if (c.CategoryID == x.CategoryID)
+                                {
+                                    @c.CategoryName
+                                }
+                            }
+                        </td>
                         <td class="col-1">
                             @* Edit button *@
                             <a class="btn" asp-controller="Home" asp-action="Edit" asp-route-id="@x.TaskID">
@@ -193,7 +217,15 @@
                         </td>
                         <td class="col-3 align-middle text-center">@x.DueDate</td>
                         <td class="col-3 align-middle text-center">@x.TaskName</td>
-                        <td class="col-3 align-middle text-center">@x.Category</td>
+                        <td class="col-3 align-middle text-center">
+                            @foreach (Category c in ViewBag.Categories)
+                            {
+                                @if (c.CategoryID == x.CategoryID)
+                                {
+                                    @c.CategoryName
+                                }
+                            }
+                        </td>
                         <td class="col-1">
                             @* Edit button *@
                             <a class="btn" asp-controller="Home" asp-action="Edit" asp-route-id="@x.TaskID">

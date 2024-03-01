@@ -19,21 +19,24 @@ namespace Mission8_Grp1_6.Controllers
         // {
         //     return View();
         // }
-        [HttpGet]
-        public IActionResult Index()
-        {
-            // ViewBag.Tasks = _context.Tasks.ToList();
-            var tasks = _context.Tasks
-                .ToList();
+        //[HttpGet]
+        //public IActionResult Index()
+        //{
+        //    // ViewBag.Tasks = _context.Tasks.ToList();
+        //    var tasks = _context.Tasks
+        //        .ToList();
 
-            return View(tasks);
-        }
+        //    return View(tasks);
+        //}
 
 
         [HttpGet]
         public IActionResult AddEdit()
         {
             ViewBag.Tasks = _context.Tasks.ToList();
+            ViewBag.Categories = _context.Categories
+                .OrderBy(x => x.CategoryID)
+                .ToList();
             return View(new Mission8_Grp1_6.Models.Task());
         }
 
@@ -43,13 +46,17 @@ namespace Mission8_Grp1_6.Controllers
             ViewBag.Tasks = _context.Tasks.ToList();
             _context.Tasks.Add(response); //add record to database
             _context.SaveChanges();
-            return View("Index");
+            return RedirectToAction("Index");
         }
 
         public IActionResult Index(Mission8_Grp1_6.Models.Task response)
         {
             ViewBag.Tasks = _context.Tasks.ToList();
             var tasks = _context.Tasks
+                .ToList();
+
+            ViewBag.Categories = _context.Categories
+                .OrderBy(x => x.CategoryID)
                 .ToList();
 
             return View(tasks);
@@ -60,6 +67,9 @@ namespace Mission8_Grp1_6.Controllers
         {
             var recordToEdit = _context.Tasks
                 .Single(x => x.TaskID == id);
+            ViewBag.Categories = _context.Categories
+                .OrderBy(x => x.CategoryID)
+                .ToList();
 
             ViewBag.Tasks = _context.Tasks.ToList();
             return View("AddEdit", recordToEdit); //addedit

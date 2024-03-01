@@ -1,4 +1,5 @@
 ﻿@model Mission8_Grp1_6.Models.Task
+
     <style>
         form {
             width: 50%;
@@ -45,9 +46,14 @@
     </div>
 
     <div class="form-group">
-        <label asp-for="Category">Category</label>
-        <input asp-for="Category" class="form-control" />
-        <span asp-validation-for="Category" class="text-danger"></span>
+    <!-- Dropdown for selecting movie category -->
+    <label asp-for="CategoryID">Category:</label><br>
+    <select asp-for="CategoryID" id="CategoryID" name="CategoryID" required>
+        @foreach (Category c in ViewBag.Categories)
+        {
+            <option value="@c.CategoryID">@c.CategoryName</option>
+        }
+    </select><br><br>
     </div>
 
     <div class="form-group">
