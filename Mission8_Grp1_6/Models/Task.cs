@@ -17,7 +17,7 @@ namespace Mission8_Grp1_6.Models
         [Required]
         public int Quadrant { get; set; }
 
-        public bool? Completed { get; set; }
+        public bool Completed { get; set; }
 
         [ForeignKey("CategoryID")]
         public int? CategoryID { get; set; }
