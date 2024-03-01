@@ -1,0 +1,9 @@
+@model Mission8_Grp1_6.Models.Task
+
+<h2>Confirmation page</h2>
+<p>Are you sure you want to delete the task "<b>@Model.TaskName</b>" from Quadrant @Model.Quadrant?</p>
+<form method="post">
+    <input type="hidden" asp-for="TaskID"/>
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a class="btn btn-info" asp-controller="Home" asp-action="Index">Cancel</a>
+</form>

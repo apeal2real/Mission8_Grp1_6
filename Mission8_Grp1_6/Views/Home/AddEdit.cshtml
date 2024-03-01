@@ -1,8 +1,5 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model Mission8_Grp1_6.Models.Task
+
     <style>
         form {
             width: 50%;
@@ -24,31 +21,48 @@
             background-color: #0056b3;
         }
     </style>
-<form method="post" asp-controller="Home" asp-action="AddEdit"> <!--<a class="btn btn-primary" asp-controller="Home" asp-action="Edit" asp-route-id="x.MovieId">Edit</a></td>-->
-    <label for="task">Task:</label><br>
-    <input type="text" id="task" name="task" required><br>
 
-    <label for="dueDate">Due Date:</label><br>
-    <input type="date" id="dueDate" name="dueDate" required><br>
+<div class="col-3-10" style="text-align: center">
+    Fill out the form below to add a task to your To-Do list!
+</div>
+<br />
+<form asp-action="AddEdit" method="post">
+    <div class="form-group">
+        <label asp-for="TaskName">Task Name</label>
+        <input asp-for="TaskName" class="form-control" />
+        <span asp-validation-for="TaskName" class="text-danger"></span>
+    </div>
 
-    <label for="quadrant">Quadrant:</label><br>
-    <input type="text" id="quadrant" name="quadrant" required><br>
+    <div class="form-group">
+        <label asp-for="DueDate">Due Date</label>
+        <input asp-for="DueDate" class="form-control" />
+        <span asp-validation-for="DueDate" class="text-danger"></span>
+    </div>
 
-    <label for="category">Category:</label><br>
-    <select id="category" name="category" required>
-        <option value="">Select Category</option>
-        <option value="Home">Home</option>
-        <option value="School">School</option>
-        <option value="Work">Work</option>
-        <option value="Church">Church</option>
-    </select><br>
+    <div class="form-group">
+        <label asp-for="Quadrant">Quadrant</label>
+        <input asp-for="Quadrant" class="form-control" type="number" min="1" max="4" value="1"/>
+        <span asp-validation-for="Quadrant" class="text-danger"></span>
+    </div>
 
-    <label for="completed">Completed:</label><br>
-    <select id="completed" name="completed" required>
-        <option value="">Select</option>
-        <option value="True">True</option>
-        <option value="False">False</option>
-    </select><br><br />
+    <div class="form-group">
+    <!-- Dropdown for selecting movie category -->
+    <label asp-for="CategoryID">Category:</label><br>
+    <select asp-for="CategoryID" id="CategoryID" name="CategoryID" required>
+        @foreach (Category c in ViewBag.Categories)
+        {
+            <option value="@c.CategoryID">@c.CategoryName</option>
+        }
+    </select><br><br>
+    </div>
 
-    <input type="submit" value="Submit">
+    <div class="form-group">
+        <label asp-for="Completed">Completed:</label><br />
+        <input type="radio" asp-for="Completed" value="true" /> Yes<br />
+        <input type="radio" asp-for="Completed" value="false" /> No<br />
+        <span asp-validation-for="Completed" class="text-danger"></span>
+    </div>
+    <br />
+
+    <button type="submit" class="btn btn-primary">Submit</button>
 </form>
